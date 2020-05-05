@@ -1,0 +1,36 @@
+JSX is a HTML like syntax used by React. It is just like
+regular HTML except that there are some modifications. The syntax 
+is intended to be used by preprocessors like Babel to transform HTML like text found in JavaScript files into standard JavaScript objects that a JavaScript engine will parse.
+
+Basically, we can use JSX to write concise HTML like structures in the same file as we write JavaScript code, then Babel will transform these expressions into actual JavaScript code.
+
+JSX is a syntax extension to JavaScript. It is used with React to describe what the UI should look like.
+
+
+Basic JSX Usage.
+
+const element = <h1>Hello, world!</h1>;
+
+
+Embedding expressions in JSX
+We can put any valid JavaScript expressions inside the curly braces in JSX. The below example renders "Hello, foo" in the UI
+
+const name = 'foo';
+const element = <h1>Hello, {name} </h1>
+
+Specifying Attributes in JSX
+Attributes are little different in JSX unlike plain HTML. Since JSX is closer to JavaScript than to HTML, React DOM uses camelCase naming convention inside of HTML attribute names
+for ex -
+
+ <div class="container"></div>
+ <div className="container"></div>
+
+ <div tabindex="0"></div>
+ <div tabIndex="0"></div>
+
+
+ Rendering JSX in React...
+ const name = 'John Doe';
+ const element = <h1>Hello, {name}</h1>
+
+ ReactDOM.render(element, document.getElementById('root'));
