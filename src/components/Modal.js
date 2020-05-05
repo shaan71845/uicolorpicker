@@ -14,7 +14,7 @@ class Modal extends React.Component {
 
   render() {
     return (
-      <div className={(this.state.showModal ? 'modal active' : 'modal')}>
+      <div className={(this.state.showModal ? 'modal active' : 'modal')} style={{ backgroundColor: this.props.modalColor }}>
         <p>Copied....</p>
       </div>
     );

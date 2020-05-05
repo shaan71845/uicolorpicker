@@ -10,7 +10,7 @@ ReactDOM.render(
     <App />
     <Footer />
   </React.StrictMode>,
-  document.body
+  document.getElementById('root')
 );
 
 // This tag syntax is neither a string nor HTML, it's JSX. JSX is a syntax extension to JavaScript.

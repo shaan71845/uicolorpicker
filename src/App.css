@@ -1,12 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@500;700&family=Titillium+Web:wght@600&display=swap');
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Montserrat, sans-serif;
-}
-
-h1 {
-  font-weight: 500;
+  font-family: 'Raleway', sans-serif;
 }
 
 html, body {
@@ -14,6 +11,10 @@ html, body {
   width: 100%;
   overflow: hidden;
 }
+#root {
+  height: 100%;
+}
+
 .container {
   width: 100%;
   height: 100%;
@@ -28,7 +29,7 @@ html, body {
 }
 
 .container h1 {
-  color: #105fe4;
+  color: rgb(115, 168, 209);
 }
 
 
@@ -55,27 +56,30 @@ html, body {
 }
 
 .color-container .color-img:hover {
-  transform: scale(1.3);
+  transform: scale(1.1);
   box-shadow: 0 3px 15px #ccc;
 }
 
 
 .color-container .change-btn {
+  position: relative;
+  top: 0;
+  font-weight: 500;
   margin: 30px 0;
   border: none;
-  border-radius: 6px;
-  background: #3498db;
+  border-radius: 2rem;
+  background: rgb(115, 168, 209);
   color: #fff;
   padding: 1rem 20px;
   text-align: center;
-  transition: all 0.4s;
+  transition: 0.4s;
   outline: none;
   cursor: pointer;
 }
 
 .color-container .change-btn:hover {
-  background: #3498dbaf;
-  box-shadow: 0 4px 10px #ccc;
+  top: -5px;
+  box-shadow: 0 4px 10px #c5d4ee;
 }
 
 .modal {
@@ -84,35 +88,34 @@ html, body {
   right: 5%;
   transform: translate(-5%, -5%);
   padding: 0.5rem 2rem;
-  background: #3498db;
   color: #fff;
   transition: all 0.4s;
   opacity: 0;
   z-index: 999;
+  border-radius: 2rem;
+}
+
+.modal p {
+  font-family: 'Titillium Web', sans-serif;
 }
 
 .modal.active {
   opacity: 1;
-  bottom: 5%;
-  box-shadow: 0 0px 4px #333;
+  bottom: 10%;
+  box-shadow: 0 5px 4px #c5d4ee;
 }
 
-.modal::before {
-  content: '';
-  height: 0px;
-  width: 0px;
-  border: 10px solid transparent;
-  position: absolute;
-  bottom: -19px;
-  left: 0px;
-  border-top-color: #3498db;
+.config {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
 }
 
-#select-list {
+.select-list {
   margin: 50px 0;
   padding: 1rem 20px;
-  border: 2px solid #3498db;
-  border-radius: 6px;
+  border: 2px solid rgb(115, 168, 209);
+  border-radius: 2rem;
   outline: none;
   margin-left: 20px;
 }
@@ -144,9 +147,6 @@ html, body {
 
 
 footer {
-  /* position: sticky;
-  top: 90%; */
-  /* padding: 2rem; */
   height: 50px;
   width: 100%;
   background: #222;

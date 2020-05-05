@@ -2,35 +2,68 @@ import React from "react";
 import "./App.css";
 import Color from "./components/Color";
 import Modal from "./components/Modal";
-import SelectList from "./components/SelectList";
+import randomColor from "randomcolor";
+import ColorConfig from "./components/ColorConfig";
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      colorConfig: {
+        luminosity: "random",
+        hue: "random",
+        format: "hex",
+        alpha: 1,
+      },
       colorLength: 5,
       colors: [],
       showModal: false,
+      modalColor: "",
     };
   }
 
   componentDidMount() {
+    this.changeAllColors();
+  }
+
+  changeAllColors = () => {
     let { colors } = this.state;
 
     for (let i = 0; i < this.state.colorLength; i++) {
-      colors[i] = this.getRandomColor();
+      colors[i] = randomColor(this.state.colorConfig);
     }
 
     this.setState({ colors });
   }
 
-  getRandomColor = () =>
-    "#" + Math.floor(Math.random() * 16777215).toString(16);
+  handleLuminosity = e => {
+    const luminosity = e.target.options[e.target.selectedIndex].value;
+
+    let { colorConfig } = this.state;
+    colorConfig.luminosity = luminosity;
+
+    this.setState({ colorConfig });
+
+    this.changeAllColors();
+
+  }
+
+  handleColorFormat = e => {
+    let { colorConfig } = this.state;
+
+    let colorFormat = e.target.options[e.target.selectedIndex].value;
+    colorConfig.format = colorFormat.toLowerCase();
+    this.setState({ colorConfig });
+
+    this.changeAllColors();
+  }
+
+  changeColorLuminosity = e => {};
 
   changeColor = e => {
     const index = e.target.parentElement.getAttribute("data-index");
     let { colors } = this.state;
-    colors[index] = this.getRandomColor();
+    colors[index] = randomColor(this.state.colorConfig);
 
     this.setState({ colors });
   };
@@ -39,11 +72,11 @@ class App extends React.Component {
     const color = e.target.parentElement.getAttribute("data-color");
     navigator.clipboard.writeText(color);
 
-    this.showModal();
+    this.showModal(color);
   };
 
-  showModal = () => {
-    this.setState({ showModal: !this.state.showModal });
+  showModal = color => {
+    this.setState({ showModal: !this.state.showModal, modalColor: color });
 
     setTimeout(() => {
       this.setState({ showModal: !this.state.showModal });
@@ -56,7 +89,7 @@ class App extends React.Component {
 
     if (this.state.colors.length < colorLength) {
       while (colors.length !== +colorLength) {
-        colors.push(this.getRandomColor());
+        colors.push(randomColor());
       }
     } else {
       colors.splice(colorLength);
@@ -75,19 +108,26 @@ class App extends React.Component {
           </span>
           UI Color Picker
         </h1>
-        <SelectList selectColorNumber={this.selectColorNumber} />
+        <ColorConfig
+          selectColorNumber={this.selectColorNumber}
+          handleLuminosity={this.handleLuminosity}
+          handleColorFormat={this.handleColorFormat}
+        />
         <div className="color-container">
           {this.state.colors.map((color, index) => (
             <Color
               copyColor={this.copyColor}
               index={index}
               color={color}
-              key={this.getRandomColor().slice(1)}
+              key={randomColor().slice(1)}
               changeColor={this.changeColor}
             />
           ))}
         </div>
-        <Modal showModal={this.state.showModal} />
+        <Modal
+          showModal={this.state.showModal}
+          modalColor={this.state.modalColor}
+        />
       </div>
     );
   }
