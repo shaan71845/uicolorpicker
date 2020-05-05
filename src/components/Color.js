@@ -21,6 +21,7 @@ class Color extends React.Component {
         <div
           onClick={this.props.copyColor}
           className="color-img"
+          title="Click to copy me!"
           style={{ background: this.state.color }}
         ></div>
         <button
@@ -28,7 +29,7 @@ class Color extends React.Component {
           onClick={this.props.changeColor}
           className="change-btn"
         >
-          Change
+          CHANGE
         </button>
       </div>
     );
