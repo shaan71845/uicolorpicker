@@ -10,15 +10,13 @@ h1 {
 }
 
 html, body {
-  height: 100vh;
+  height: 100%;
   width: 100%;
-  display: flex;
-  flex-direction: column;
   overflow: hidden;
 }
 .container {
   width: 100%;
-  height: 90vh;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -26,6 +24,7 @@ html, body {
   flex-wrap: wrap;
   padding: 1rem 2rem;
   text-align: center;
+  margin-bottom: -50px;
 }
 
 .container h1 {
@@ -126,9 +125,6 @@ html, body {
 }
 
 @media screen and (max-width: 550px) {
-  html, body {
-    overflow: auto;
-  }
   .color-container, .container {
     display: block;
   }
@@ -148,9 +144,10 @@ html, body {
 
 
 footer {
-  position: absolute;
-  top: 97%;
-  padding: 2rem;
+  /* position: sticky;
+  top: 90%; */
+  /* padding: 2rem; */
+  height: 50px;
   width: 100%;
   background: #222;
 }
@@ -159,6 +156,7 @@ footer p {
   color: #fff;
   font-size: 0.8rem;
   text-align: center;
+  line-height: 50px;
 }
 
 footer p a {
