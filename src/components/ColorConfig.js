@@ -1,8 +1,7 @@
 import React from 'react';
-import ColorLength from './ColorLength';
-import Luminosity from './Luminosity';
-import Format from './Format';
-// import Alpha from './Alpha';
+import ColorLength from './colorconfig/ColorLength';
+import Luminosity from './colorconfig/Luminosity';
+import Format from './colorconfig/Format';
 
 
 class ColorConfig extends React.Component {
@@ -18,7 +17,6 @@ class ColorConfig extends React.Component {
         <ColorLength selectColorNumber={this.props.selectColorNumber} />
         <Luminosity handleLuminosity={this.props.handleLuminosity} />
         <Format handleColorFormat={this.props.handleColorFormat} />
-        {/* <Alpha value={1} changeColorAlpha={this.props.changeColorAlpha} /> */}
       </div>
     );
   }
