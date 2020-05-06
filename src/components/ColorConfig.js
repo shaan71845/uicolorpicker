@@ -1,26 +1,16 @@
-import React from 'react';
-import ColorLength from './colorconfig/ColorLength';
-import Luminosity from './colorconfig/Luminosity';
-import Format from './colorconfig/Format';
+import React from "react";
+import ColorLength from "./colorconfig/ColorLength";
+import Luminosity from "./colorconfig/Luminosity";
+import Format from "./colorconfig/Format";
 
-
-class ColorConfig extends React.Component {
-  constructor (props) {
-    super(props);    
-    this.state = {};
-  }
-
-
-  render () {
-    return (
-      <div className="config">
-        <ColorLength selectColorNumber={this.props.selectColorNumber} />
-        <Luminosity handleLuminosity={this.props.handleLuminosity} />
-        <Format handleColorFormat={this.props.handleColorFormat} />
-      </div>
-    );
-  }
-
+function ColorConfig(props) {
+  return (
+    <div className="config">
+      <ColorLength selectColorNumber={props.selectColorNumber} />
+      <Luminosity handleLuminosity={props.handleLuminosity} />
+      <Format handleColorFormat={props.handleColorFormat} />
+    </div>
+  );
 }
 
 export default ColorConfig;

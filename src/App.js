@@ -4,6 +4,8 @@ import Color from "./components/Color";
 import Modal from "./components/Modal";
 import randomColor from "randomcolor";
 import ColorConfig from "./components/ColorConfig";
+import v4 from 'uuid';
+
 
 class App extends React.Component {
   constructor(props) {
@@ -12,8 +14,7 @@ class App extends React.Component {
       colorConfig: {
         luminosity: "random",
         hue: "random",
-        format: "hex",
-        alpha: 1,
+        format: "hex"
       },
       colorLength: 5,
       colors: [],
@@ -118,7 +119,7 @@ class App extends React.Component {
               copyColor={this.copyColor}
               index={index}
               color={color}
-              key={randomColor().slice(1)}
+              key={v4()}
               changeColor={this.changeColor}
             />
           ))}
