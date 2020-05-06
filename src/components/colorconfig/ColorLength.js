@@ -23,7 +23,7 @@ class SelectList extends React.Component {
         </select>
       </div>
     );
-  }
+    }
 
 }
 

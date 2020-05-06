@@ -34,7 +34,7 @@ class App extends React.Component {
     }
 
     this.setState({ colors });
-  }
+  };
 
   handleLuminosity = e => {
     const luminosity = e.target.options[e.target.selectedIndex].value;
@@ -45,8 +45,7 @@ class App extends React.Component {
     this.setState({ colorConfig });
 
     this.changeAllColors();
-
-  }
+  };
 
   handleColorFormat = e => {
     let { colorConfig } = this.state;
@@ -56,7 +55,7 @@ class App extends React.Component {
     this.setState({ colorConfig });
 
     this.changeAllColors();
-  }
+  };
 
   changeColorLuminosity = e => {};
 
