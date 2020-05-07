@@ -1,20 +1,23 @@
-import React from 'react';
-
+import React from "react";
 
 class SelectList extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
     this.state = {
-      selectedValue: ''
-    }
+      selectedValue: "",
+    };
   }
 
-
-  render () {
+  render() {
     return (
       <div className="select-container">
-        <label htmlFor="">Number of colors: </label>
-        <select className="select-list" id="select-list" onChange={this.props.selectColorNumber} defaultValue={5}>
+        <label>Number of colors: </label>
+        <select
+          className="select-list"
+          id="select-list"
+          onChange={this.props.handleColorLength}
+          defaultValue={5}
+        >
           <option value="5">5</option>
           <option value="4">4</option>
           <option value="3">3</option>
@@ -23,8 +26,7 @@ class SelectList extends React.Component {
         </select>
       </div>
     );
-    }
-
+  }
 }
 
 export default SelectList;

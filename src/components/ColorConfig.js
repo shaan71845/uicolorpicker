@@ -3,10 +3,10 @@ import ColorLength from "./colorconfig/ColorLength";
 import Luminosity from "./colorconfig/Luminosity";
 import Format from "./colorconfig/Format";
 
-function ColorConfig(props) {
+function ColorConfig (props) {
   return (
     <div className="config">
-      <ColorLength selectColorNumber={props.selectColorNumber} />
+      <ColorLength handleColorLength={props.handleColorLength} />
       <Luminosity handleLuminosity={props.handleLuminosity} />
       <Format handleColorFormat={props.handleColorFormat} />
     </div>

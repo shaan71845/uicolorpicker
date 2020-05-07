@@ -4,8 +4,7 @@ import Color from "./components/Color";
 import Modal from "./components/Modal";
 import randomColor from "randomcolor";
 import ColorConfig from "./components/ColorConfig";
-import v4 from 'uuid';
-
+import { v4 } from "uuid";
 
 class App extends React.Component {
   constructor(props) {
@@ -14,12 +13,14 @@ class App extends React.Component {
       colorConfig: {
         luminosity: "random",
         hue: "random",
-        format: "hex"
+        format: "hex",
+        colorLength: 5,
+        colors: [],
       },
-      colorLength: 5,
-      colors: [],
-      showModal: false,
-      modalColor: "",
+      modal: {
+        showModal: false,
+        modalColor: "",
+      },
     };
   }
 
@@ -28,13 +29,60 @@ class App extends React.Component {
   }
 
   changeAllColors = () => {
-    let { colors } = this.state;
+    let { colorConfig } = this.state;
 
-    for (let i = 0; i < this.state.colorLength; i++) {
-      colors[i] = randomColor(this.state.colorConfig);
+    for (let i = 0; i < this.state.colorConfig.colorLength; i++) {
+      colorConfig.colors[i] = randomColor(this.state.colorConfig);
     }
 
-    this.setState({ colors });
+    this.setState({ colorConfig });
+  };
+
+  changeColor = e => {
+    const index = [...e.target.parentElement.parentElement.children].indexOf(
+      e.target.parentElement
+    );
+    let { colorConfig } = this.state;
+    colorConfig.colors[index] = randomColor(this.state.colorConfig);
+
+    this.setState({ colorConfig });
+  };
+
+  copyColor = e => {
+    const color = e.target.nextElementSibling.value;
+    navigator.clipboard.writeText(color);
+
+    this.showModal(color);
+  };
+
+  showModal = color => {
+    const { modal } = this.state;
+
+    modal.showModal = !modal.showModal;
+    modal.modalColor = color;
+
+    this.setState({ modal });
+
+    setTimeout(() => {
+      modal.showModal = !modal.showModal;
+      this.setState({ modal });
+    }, 2000);
+  };
+
+  handleColorLength = e => {
+    const colorLength = e.target.options[e.target.selectedIndex].value;
+    const { colorConfig } = this.state;
+
+    if (this.state.colorConfig.colors.length < colorLength) {
+      while (colorConfig.colors.length !== +colorLength) {
+        colorConfig.colors.push(randomColor());
+      }
+    } else {
+      colorConfig.colors.splice(colorLength);
+      colorConfig.colorLength = colorConfig.colors.length;
+    }
+
+    this.setState({ colorConfig });
   };
 
   handleLuminosity = e => {
@@ -58,76 +106,31 @@ class App extends React.Component {
     this.changeAllColors();
   };
 
-  changeColorLuminosity = e => {};
-
-  changeColor = e => {
-    const index = e.target.parentElement.getAttribute("data-index");
-    let { colors } = this.state;
-    colors[index] = randomColor(this.state.colorConfig);
-
-    this.setState({ colors });
-  };
-
-  copyColor = e => {
-    const color = e.target.parentElement.getAttribute("data-color");
-    navigator.clipboard.writeText(color);
-
-    this.showModal(color);
-  };
-
-  showModal = color => {
-    this.setState({ showModal: !this.state.showModal, modalColor: color });
-
-    setTimeout(() => {
-      this.setState({ showModal: !this.state.showModal });
-    }, 2000);
-  };
-
-  selectColorNumber = e => {
-    const colorLength = e.target.options[e.target.selectedIndex].value;
-    const { colors } = this.state;
-
-    if (this.state.colors.length < colorLength) {
-      while (colors.length !== +colorLength) {
-        colors.push(randomColor());
-      }
-    } else {
-      colors.splice(colorLength);
-    }
-
-    this.setState({ colorLength, colors });
-    console.log(colors);
-  };
-
   render() {
     return (
       <div className="container">
-        <h1>
+        <h1 className="wow fadeInUp">
           <span role="img" aria-label="emoji">
-            ⛏{" "}
+            ⛏
           </span>
           UI Color Picker
         </h1>
         <ColorConfig
-          selectColorNumber={this.selectColorNumber}
+          handleColorLength={this.handleColorLength}
           handleLuminosity={this.handleLuminosity}
           handleColorFormat={this.handleColorFormat}
         />
         <div className="color-container">
-          {this.state.colors.map((color, index) => (
+          {this.state.colorConfig.colors.map((color, index) => (
             <Color
               copyColor={this.copyColor}
-              index={index}
               color={color}
               key={v4()}
               changeColor={this.changeColor}
             />
           ))}
         </div>
-        <Modal
-          showModal={this.state.showModal}
-          modalColor={this.state.modalColor}
-        />
+        <Modal modal={this.state.modal} />
       </div>
     );
   }

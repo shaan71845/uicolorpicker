@@ -3,7 +3,7 @@ import React from "react";
 function Luminosity(props) {
   return (
     <div className="select-container">
-      <label htmlFor="">Luminosity</label>
+      <label>Luminosity</label>
       <select
         onChange={props.handleLuminosity}
         className="select-list"

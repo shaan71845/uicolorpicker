@@ -1,10 +1,9 @@
- import React from "react";
+import React from "react";
 
 class Color extends React.Component {
   constructor(props) {
     super(props);
     this.state = { color: "" };
-    
   }
 
   static getDerivedStateFromProps(props) {
@@ -13,17 +12,14 @@ class Color extends React.Component {
 
   render() {
     return (
-      <div
-        className="color"
-        data-color={this.state.color}
-        data-index={this.props.index}
-      >
+      <div className="color">
         <div
           onClick={this.props.copyColor}
           className="color-img"
           title="Click to copy me!"
           style={{ background: this.state.color }}
         ></div>
+        <input type="hidden" value={this.state.color} />
         <button
           type="button"
           onClick={this.props.changeColor}

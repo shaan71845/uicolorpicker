@@ -3,7 +3,7 @@ import React from "react";
 function Format(props) {
   return (
     <div className="select-container">
-      <label htmlFor="">Type</label>
+      <label>Type</label>
       <select
         onChange={props.handleColorFormat}
         className="select-list"
