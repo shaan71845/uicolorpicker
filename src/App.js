@@ -14,7 +14,7 @@ class App extends React.Component {
         luminosity: "random",
         hue: "random",
         format: "hex",
-        colorLength: 5,
+        colorLength: 10,
         colors: [],
       },
       modal: {
@@ -55,6 +55,7 @@ class App extends React.Component {
     this.showModal(color);
   };
 
+
   showModal = color => {
     const { modal } = this.state;
 
@@ -79,9 +80,9 @@ class App extends React.Component {
       }
     } else {
       colorConfig.colors.splice(colorLength);
-      colorConfig.colorLength = colorConfig.colors.length;
     }
 
+    colorConfig.colorLength = colorConfig.colors.length;
     this.setState({ colorConfig });
   };
 
@@ -106,10 +107,21 @@ class App extends React.Component {
     this.changeAllColors();
   };
 
+  handleHue = e => {
+    const hue = e.target.options[e.target.selectedIndex].value.toLowerCase();
+
+    const { colorConfig } = this.state;
+    colorConfig.hue = hue;
+
+    this.setState({ colorConfig });
+
+    this.changeAllColors();
+  }
+
   render() {
     return (
       <div className="container">
-        <h1 className="wow fadeInUp">
+        <h1>
           <span role="img" aria-label="emoji">
             ⛏
           </span>
@@ -119,6 +131,7 @@ class App extends React.Component {
           handleColorLength={this.handleColorLength}
           handleLuminosity={this.handleLuminosity}
           handleColorFormat={this.handleColorFormat}
+          handleHue={this.handleHue}
         />
         <div className="color-container">
           {this.state.colorConfig.colors.map((color, index) => (
