@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/uicolorpicker/static/css/main.3bd7b62e.chunk.css",
-    "main.js": "/uicolorpicker/static/js/main.95c8bd36.chunk.js",
-    "main.js.map": "/uicolorpicker/static/js/main.95c8bd36.chunk.js.map",
+    "main.css": "/uicolorpicker/static/css/main.7067184d.chunk.css",
+    "main.js": "/uicolorpicker/static/js/main.349a227c.chunk.js",
+    "main.js.map": "/uicolorpicker/static/js/main.349a227c.chunk.js.map",
     "runtime-main.js": "/uicolorpicker/static/js/runtime-main.28eed323.js",
     "runtime-main.js.map": "/uicolorpicker/static/js/runtime-main.28eed323.js.map",
     "static/js/2.32cad7cc.chunk.js": "/uicolorpicker/static/js/2.32cad7cc.chunk.js",
     "static/js/2.32cad7cc.chunk.js.map": "/uicolorpicker/static/js/2.32cad7cc.chunk.js.map",
     "index.html": "/uicolorpicker/index.html",
-    "precache-manifest.57cda614d2b2f14eff19ca9016f521ef.js": "/uicolorpicker/precache-manifest.57cda614d2b2f14eff19ca9016f521ef.js",
+    "precache-manifest.16fdc6fe8bc6e3263e054144748ae9b5.js": "/uicolorpicker/precache-manifest.16fdc6fe8bc6e3263e054144748ae9b5.js",
     "service-worker.js": "/uicolorpicker/service-worker.js",
-    "static/css/main.3bd7b62e.chunk.css.map": "/uicolorpicker/static/css/main.3bd7b62e.chunk.css.map",
+    "static/css/main.7067184d.chunk.css.map": "/uicolorpicker/static/css/main.7067184d.chunk.css.map",
     "static/js/2.32cad7cc.chunk.js.LICENSE.txt": "/uicolorpicker/static/js/2.32cad7cc.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.28eed323.js",
     "static/js/2.32cad7cc.chunk.js",
-    "static/css/main.3bd7b62e.chunk.css",
-    "static/js/main.95c8bd36.chunk.js"
+    "static/css/main.7067184d.chunk.css",
+    "static/js/main.349a227c.chunk.js"
   ]
 }
